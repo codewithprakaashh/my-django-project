@@ -1,0 +1,16 @@
+Install django
+then to start use django-admin startproject project_name
+then to create an app use python manage.py startapp app_name
+# Template adding
+in the base directory where manage.py is located create a folder named templates
+then in the settings.py file add the following line to the TEMPLATES list:
+'DIRS': [BASE_DIR, 'templates']
+#
+To access the variables in the template use the following syntax:
+{{ variable_name }}
+and to send the variables to the template use the following syntax:
+return render(request, 'template_name.html', {'variable_name': variable_value})
+
+While sending POST in Django form we need to add csrf token in the form
+# To do this we need to add the following line in the form:
+{% csrf_token %}    

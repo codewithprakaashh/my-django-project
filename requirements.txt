@@ -5,7 +5,34 @@ then to create an app use python manage.py startapp app_name
 in the base directory where manage.py is located create a folder named templates
 then in the settings.py file add the following line to the TEMPLATES list:
 'DIRS': [BASE_DIR, 'templates']
+
+We also need to register our app in our main project_name
+so go to the settings.py file and add the following line in the INSTALLED_APPS list:
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'myapp'
+]
 #
+If changed anything in moels file we need to make migrations
+write 
+python manage.py makemigrations
+python manage.py migrate
+
+# Create admin in django
+in cmd write the following command:
+python manage.py createsuperuser
+ then in the url in browser write : /admin and login
+
+# we need to register our models in admin.py file to see them in the admin panel
+from .models import ModelName
+admin.site.register(ModelFunctionName)
+
+
 To access the variables in the template use the following syntax:
 {{ variable_name }}
 and to send the variables to the template use the following syntax:

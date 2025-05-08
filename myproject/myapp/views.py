@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Feature
 from django.contrib.auth.models import User
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
 
 from django.contrib import messages
 from django.contrib.auth import authenticate
@@ -64,3 +65,14 @@ def Login(request):
             return redirect('login')
     else:
         return render(request, "login.html")
+    
+def logout(request):
+    auth_logout(request)
+    return redirect("/")
+
+def counter(request):
+    posts = [1,2,3,4,5,"tim","tom","jerry"]
+    return render(request,"counter.html", {"posts":posts})
+
+def post(request, pk):
+    return render(request, "post.html",{"pk":pk})
